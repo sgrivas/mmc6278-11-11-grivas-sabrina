@@ -8,6 +8,9 @@ const pipe = (...fns) => firstArg => fns.reduce((returnValue, fn) => fn(returnVa
 
 const makeTag = tag => str => `<${tag}>${str}</${tag}>`
 
+const makeEm= makeTag('em')
+const makeH3= makeTag('h3')
+
 // complete this function
 const makePoemHTML = ([
   {
@@ -16,8 +19,14 @@ const makePoemHTML = ([
     lines
   }
 ]) => {
-  const titleEl = makeTag('h2')(title)
-  console.log(titleEl);
+  const authorEl = pipe(makeEm, makeH3)
+  poemEl.innerHTML=`
+  ${makeTag('h2')(title)}
+  ${authorEl(author)}
+  `
+  console.log(lines);
+  const linesBr= lines.split(', ')
+  console.log(linesBr);
 }
 
 // attach a click event to #get-poem
