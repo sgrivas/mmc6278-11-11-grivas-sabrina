@@ -19,14 +19,15 @@ const makePoemHTML = ([
     lines
   }
 ]) => {
-  const authorEl = pipe(makeEm, makeH3)
+  const authorFn = pipe(makeEm, makeH3)
   poemEl.innerHTML=`
   ${makeTag('h2')(title)}
-  ${authorEl(author)}
+  ${authorFn(`by ${author}`)}
   `
-  console.log(lines);
-  const linesBr= lines.split(', ')
-  console.log(linesBr);
+  const stanza = lines.map(line => {
+    return line.split(', ')
+  })
+  console.log(stanza);
 }
 
 // attach a click event to #get-poem
