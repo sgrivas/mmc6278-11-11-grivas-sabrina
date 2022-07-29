@@ -24,10 +24,10 @@ const makePoemHTML = ([
   ${makeTag('h2')(title)}
   ${authorFn(`by ${author}`)}
   `
+  console.log(lines);
   const stanza = lines.map(line => {
-    return line.split(', ')
+    
   })
-  console.log(stanza);
 }
 
 // attach a click event to #get-poem
